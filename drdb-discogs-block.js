@@ -165,7 +165,7 @@ window.addEventListener(
 			document.documentElement;
 
 		if (
-			scrollTop + clientHeight >= scrollHeight - 5 &&
+			scrollTop + clientHeight >= scrollHeight - 200 &&
 			moreReleases(currentPage, limit, total) &&
 			!loading
 		) {
