@@ -1,0 +1,101 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-boilerplate {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.drdb-discogs-container {
+	max-width: 700px;
+	min-width: 200px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.drdb-discogs-block-parent {
+	max-width: 700px;
+	min-width: 200px;
+	margin: auto;
+}
+
+.discogs-card {
+	height: 350px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 0px;
+	padding: 0px;
+}
+
+.album-title-div h4 a {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.album-title-div h4 {
+	margin: 0px;
+	padding: 0px;
+}
+
+.discogs-card h5 {
+	margin: 0px;
+	padding: 0px;
+}
+
+p {
+	padding: 0px;
+	margin: 0px;
+}
+
+.album-cover-div {
+	height: 150px;
+}
+
+.album-title-div {
+	height: 75px;
+	background-color: rgb(246, 246, 246);
+}
+
+/* loader */
+
+.drdb-loader {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	height: 80px;
+	opacity: 0;
+}
+
+.drdb-loader.show {
+	opacity: 1;
+}
+
+.drdb-loader {
+	display: inline-block;
+	height: 80px;
+}
+
+.drdb-loader:after {
+	content: " ";
+	display: block;
+	width: 64px;
+	height: 64px;
+	margin: auto;
+	border-radius: 50%;
+	border: 6px solid rgb(0, 0, 0);
+	border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
+	animation: drdb-loader 1.2s linear infinite;
+}
+@keyframes drdb-loader {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
