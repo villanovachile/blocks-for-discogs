@@ -24,7 +24,7 @@
 }
 
 .discogs-card {
-	height: 350px;
+	height: 375px;
 	width: 100%;
 	text-align: center;
 	margin-bottom: 10px;
@@ -32,9 +32,10 @@
 	padding: 0px;
 }
 
-.album-title-div h4 a {
+.album-title-div h4 {
 	font-size: 18px;
 	font-weight: bold;
+	line-height: 1.2em;
 }
 
 .album-title-div h4 {
@@ -57,7 +58,8 @@ p {
 }
 
 .album-title-div {
-	height: 75px;
+	height: 95px;
+	padding-top: 10px;
 	background-color: rgb(246, 246, 246);
 }
 

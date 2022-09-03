@@ -1,6 +1,6 @@
 {
 	"name": "discogsblock",
-	"version": "1.0a",
+	"version": "0.1.0",
 	"description": "A gutenberg block to display a collection from Discogs.com",
 	"author": "Daniel Rodriguez",
 	"license": "GPL-2.0-or-later",

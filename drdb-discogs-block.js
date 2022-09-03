@@ -90,7 +90,12 @@ const displayReleases = (discogsReleases) => {
 		//Album cover image
 		albumCoverCard = document.createElement('img');
 		albumCoverCard.setAttribute('src', albumCover);
-		albumCoverDiv.appendChild(albumCoverCard);
+		const albumArtLink = document.createElement('a');
+		albumArtLink.title = albumName;
+		albumArtLink.href = albumURL;
+		albumArtLink.target = '_blank';
+		albumCoverDiv.appendChild(albumArtLink);
+		albumArtLink.appendChild(albumCoverCard);
 
 		//Album title H5
 		artistNameCard = document.createElement('h5');
