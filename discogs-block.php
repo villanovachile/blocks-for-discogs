@@ -30,6 +30,8 @@ add_action( 'init', 'drdb_discogs_block_register_scripts' );
 
     function drdb_render_releases() {
         wp_enqueue_script( 'jquery' );
+        wp_localize_script( 'drdb_script', 'discogs_fetch',
+        array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
         wp_enqueue_script( 'drdb_script' );
         return '
         <div id="drdb-discogs-block-parent" class="drdb-discogs-block-parent">

@@ -17,7 +17,7 @@ const getReleases = (page, limit) => {
 
 	jQuery.ajax({
 		async: false,
-		url: '/wp-admin/admin-ajax.php',
+		url: discogs_fetch.ajaxurl,
 		type: 'get',
 		data: {
 			action: 'drdb_discogs_fetch',
