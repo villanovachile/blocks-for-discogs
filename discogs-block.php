@@ -25,10 +25,74 @@
 }
 
 
-// initializes registration function for ccnj.js
+
 add_action( 'init', 'drdb_discogs_block_register_scripts' );
 
+
+
     function drdb_render_releases() {
+
+        if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+            $options = get_option( 'drdb_discogs_block_options' );
+            if (isset($options['token'])) {
+            $token = $options['token'];
+            } else {
+                $token = '';
+            }
+            if (isset($options['username'])) {
+                $username = $options['username'];
+                } else {
+                    $username = '';
+                }
+            
+                $page = 1;
+                $limit = 6;
+            
+                $response = wp_remote_get(
+                    esc_url_raw( 'https://api.discogs.com/users/' . $username .'/collection/folders/0/releases?page='.$page.'&per_page='.$limit ),
+                    array(
+                        'headers' => array(
+                            'referer' => home_url(),
+                            'Authorization' => 'Discogs token='.$token
+                        )
+                    )
+                );
+                
+            if ( is_wp_error($response) ) {
+                return 'false';
+            }
+            
+            $body = wp_remote_retrieve_body( $response );
+            $data = json_decode( $body, true );
+            
+            
+            $output = '<div id="drdb-discogs-block-parent" class="drdb-discogs-block-parent">
+                        <div id="#drdb-discogs-container" class="drdb-discogs-container">';
+            
+            foreach ($data['releases'] as $item){
+                $albumName = $item['basic_information']['title'];
+                $artistName = $item['basic_information']['artists'][0]['name'];
+                $albumCover = $item['basic_information']['thumb'];
+                $releaseYear = $item['basic_information']['year'];
+                $format = $item['basic_information']['formats'][0]['name'];
+                $output .= '<div class="discogs-card">
+                                <div class="album-title-div">
+                                    <h4>' . $albumName . '</h4>
+                                </div>
+                                <div><img src="' . $albumCover . '"></div>
+                                <h5>' . $artistName . '</h5>
+                                <p>Format: ' . $format . '</p>
+                                <p>Released: ' . $releaseYear . '</p>
+                                </div>';
+            }
+            $output .= '</div></div>';
+
+            return  $output;
+        
+        } 
+            
+        
+        
         wp_enqueue_script( 'jquery' );
         wp_localize_script( 'drdb_script', 'discogs_fetch',
         array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
@@ -91,6 +155,7 @@ add_action( 'init', 'drdb_discogs_block_register_scripts' );
     
         }
         die();
+    
     }
 
 
@@ -208,5 +273,3 @@ function drdb_load_menu() {
     }
 	
 }
-
-

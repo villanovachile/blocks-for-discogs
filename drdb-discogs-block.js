@@ -10,8 +10,6 @@ loader.setAttribute('id', `#drdb-discogs-loader`);
 loader.classList.add('drdb-loader');
 discogsBlockParent.appendChild(loader);
 
-//async function discogsFetch () {
-
 const getReleases = (page, limit) => {
 	let releases;
 
@@ -38,7 +36,6 @@ const getReleases = (page, limit) => {
 };
 
 const displayReleases = (discogsReleases) => {
-	console.log(discogsReleases.data.releases);
 	discogsReleases.data.releases.forEach((release) => {
 		let artistName = release.basic_information.artists[0].name;
 		let albumName = release.basic_information.title;
@@ -50,7 +47,6 @@ const displayReleases = (discogsReleases) => {
 		const artistURL =
 			'https://discogs.com/artist/' +
 			release.basic_information.artists[0].id;
-		//let gridNumber = `gridNumber${i}`;
 
 		if ((releaseYear == 0) | (releaseYear == null)) {
 			releaseYear = 'Unknown';
@@ -62,7 +58,6 @@ const displayReleases = (discogsReleases) => {
 
 		// Parent container
 		gridNumber = document.createElement('div');
-		//gridNumber.setAttribute('id', `discogs-release${i}`);
 		gridNumber.classList.add('discogs-card');
 
 		// album title container
@@ -72,7 +67,7 @@ const displayReleases = (discogsReleases) => {
 
 		// album cover container
 		albumCoverDiv = document.createElement('div');
-		//albumCoverDiv.classList.add('album-cover-div');
+		albumCoverDiv.classList.add('album-cover-div');
 		gridNumber.appendChild(albumCoverDiv);
 
 		// Album title H4
@@ -113,7 +108,7 @@ const displayReleases = (discogsReleases) => {
 		formatCard.appendChild(document.createTextNode('Format: ' + format));
 		gridNumber.appendChild(formatCard);
 
-		//format P tag
+		//release year P tag
 		releaseYearCard = document.createElement('p');
 		releaseYearCard.appendChild(
 			document.createTextNode('Release Year: ' + releaseYear)
@@ -144,8 +139,6 @@ const moreReleases = (page, limit, total) => {
 };
 
 const loadReleases = async (page, limit) => {
-	//console.log(page, limit, total)
-
 	showLoader();
 
 	setTimeout(async () => {
