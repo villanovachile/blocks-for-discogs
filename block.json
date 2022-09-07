@@ -1,14 +1,13 @@
 {
 	"apiVersion": 2,
-	"name": "drdb/discogs-block",
-	"title": "Discogs Block",
+	"name": "drbfd/blocks-for-discogs",
+	"title": "Blocks for Discogs",
 	"category": "embed",
-	"description": "Display your collection from discogs in a Gutenberg block or shortcode. Be sure to enter your user name and Discogs.com token in Discogs Block settings.",
+	"description": "Display your collection from Discogs in a Gutenberg block or shortcode. Be sure to enter your user name and Discogs.com token in Blocks for Discogs settings.",
 	"supports": {
 		"html": false
 	},
-	"textdomain": "discogs-block",
+	"textdomain": "blocks-for-discogs",
 	"editorScript": "file:./build/index.js",
-	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"
 }

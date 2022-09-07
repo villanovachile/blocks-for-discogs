@@ -1,14 +1,16 @@
-const discogsBlockParent = document.getElementById('drdb-discogs-block-parent');
+const blocksForDiscogsParent = document.getElementById(
+	'drbfd-blocks-for-discogs-parent'
+);
 
-const discogsBlockContainer = document.createElement('div');
-discogsBlockContainer.setAttribute('id', `#drdb-discogs-container`);
-discogsBlockContainer.classList.add('drdb-discogs-container');
-discogsBlockParent.appendChild(discogsBlockContainer);
+const blocksForDiscogsContainer = document.createElement('div');
+blocksForDiscogsContainer.setAttribute('id', `#drbfd-discogs-container`);
+blocksForDiscogsContainer.classList.add('drbfd-discogs-container');
+blocksForDiscogsParent.appendChild(blocksForDiscogsContainer);
 
 const loader = document.createElement('div');
-loader.setAttribute('id', `#drdb-discogs-loader`);
-loader.classList.add('drdb-loader');
-discogsBlockParent.appendChild(loader);
+loader.setAttribute('id', `#drbfd-discogs-loader`);
+loader.classList.add('drbfd-loader');
+blocksForDiscogsParent.appendChild(loader);
 
 const getReleases = (page, limit) => {
 	let releases;
@@ -18,14 +20,14 @@ const getReleases = (page, limit) => {
 		url: discogs_fetch.ajaxurl,
 		type: 'get',
 		data: {
-			action: 'drdb_discogs_fetch',
-			page: page,
-			limit: limit,
+			action: 'drbfd_discogs_fetch',
+			page,
+			limit,
 		},
-		success: function (response) {
+		success(response) {
 			releases = response;
 		},
-		error: function (error) {
+		error(error) {
 			console.log(
 				'There was an issue fetching the releases from Discogs.com'
 			);
@@ -37,10 +39,10 @@ const getReleases = (page, limit) => {
 
 const displayReleases = (discogsReleases) => {
 	discogsReleases.data.releases.forEach((release) => {
-		let artistName = release.basic_information.artists[0].name;
-		let albumName = release.basic_information.title;
+		const artistName = release.basic_information.artists[0].name;
+		const albumName = release.basic_information.title;
 		let releaseYear = release.basic_information.year;
-		let format = release.basic_information.formats[0].name;
+		const format = release.basic_information.formats[0].name;
 		let albumCover = release.basic_information.thumb;
 		const albumURL =
 			'https://discogs.com/release/' + release.basic_information.id;
@@ -60,15 +62,15 @@ const displayReleases = (discogsReleases) => {
 		gridNumber = document.createElement('div');
 		gridNumber.classList.add('discogs-card');
 
-		// album title container
-		albumTitleDiv = document.createElement('div');
-		albumTitleDiv.classList.add('album-title-div');
-		gridNumber.appendChild(albumTitleDiv);
-
 		// album cover container
 		albumCoverDiv = document.createElement('div');
 		albumCoverDiv.classList.add('album-cover-div');
 		gridNumber.appendChild(albumCoverDiv);
+
+		// album title container
+		albumTitleDiv = document.createElement('div');
+		albumTitleDiv.classList.add('album-title-div');
+		gridNumber.appendChild(albumTitleDiv);
 
 		// Album title H4
 		albumNameCard = document.createElement('h4');
@@ -114,7 +116,7 @@ const displayReleases = (discogsReleases) => {
 			document.createTextNode('Release Year: ' + releaseYear)
 		);
 		gridNumber.appendChild(releaseYearCard);
-		discogsBlockContainer.appendChild(gridNumber);
+		blocksForDiscogsContainer.appendChild(gridNumber);
 	});
 };
 
