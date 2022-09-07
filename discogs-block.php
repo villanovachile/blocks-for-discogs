@@ -114,7 +114,7 @@ function drdb_shortcode_style_func() {
         
         wp_enqueue_script( 'jquery' );
         wp_localize_script( 'drdb_script', 'discogs_fetch',
-        array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+        array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'noimage' => plugin_dir_url( __FILE__ ) . '/assets/noimage.png' ) );
         wp_enqueue_script( 'drdb_script' );
         return '
         <div id="drdb-discogs-block-parent" class="drdb-discogs-block-parent">
@@ -181,7 +181,7 @@ function drdb_shortcode_style_func() {
 add_action ('admin_menu', 'drdb_add_settings_menu');
 
     function drdb_add_settings_menu() {
-            add_menu_page ('Discogs Block Settings', 'Discogs Bock', 'manage_options', 'drdb_discogs_block', 'drdb_discogs_block_option_page', 'dashicons-admin-site', 99);
+            add_menu_page ('Discogs Block Settings', 'Discogs Bock', 'manage_options', 'drdb_discogs_block', 'drdb_discogs_block_option_page', plugin_dir_url( __FILE__ ) . '/assets/discogs-icon.png', 99);
     }
 
     // Create the option page

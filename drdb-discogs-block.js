@@ -53,7 +53,7 @@ const displayReleases = (discogsReleases) => {
 		}
 
 		if (albumCover == '') {
-			albumCover = 'noimage.png';
+			albumCover = discogs_fetch.noimage;
 		}
 
 		// Parent container
