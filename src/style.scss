@@ -5,73 +5,62 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-boilerplate {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+.drdb-discogs-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
 }
 
-.drdb-discogs-container {
-	max-width: 700px;
-	min-width: 200px;
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
 .drdb-discogs-block-parent {
-	max-width: 700px;
-	min-width: 200px;
 	margin: auto;
 }
 
-.discogs-card {
-	height: 375px;
-	width: 100%;
-	text-align: center;
-	margin-bottom: 10px;
-	margin-top: 0px;
-	padding: 0px;
-}
-
-.album-title-div h4 {
-	font-size: 18px !important;
-	font-weight: bold !important;
-	line-height: 1.2em !important;
-}
-
-.album-title-div h4 {
-	margin: 0px;
-	padding: 0px;
-}
-
-.discogs-card h5 {
-	margin: 0px;
-	padding: 0px;
-}
-
-.discogs-card p {
-	padding: 0px;
-	margin: 0px;
-}
-
 .album-cover-div {
-	height: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	min-height: 40%;
 }
 
-.album-title-div {
-	height: 95px;
-	padding: 10px;
-	margin-left: 2px;
-	margin-right: 2px;
-	background-color: rgb(246, 246, 246);
+.discogs-card {
+	padding: 5%;
+	border-radius: 2%;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.12);
+	margin: 1%;
 }
 
-/* loader */
+.album-title-div h4 {
+	font-family: "Helvetica Neue", Helvetica, "Nimbus Sans", Arial, sans-serif !important;
+	font-size: 1.2rem !important;
+	text-align: center;
+	width: 100%;
+}
+.discogs-card h5 {
+	font-family: "Helvetica Neue", Helvetica, "Nimbus Sans", Arial, sans-serif !important;
+	font-size: 0.8rem !important;
+	text-align: center;
+}
+.discogs-card p {
+	font-family: "Helvetica Neue", Helvetica, "Nimbus Sans", Arial, sans-serif !important;
+	font-size: 0.8rem !important;
+	line-height: 0.85rem;
+}
+.album-cover-div img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.drdb-discogs-block-error {
+	font-style: italic;
+	padding: 5%;
+	border-radius: 2%;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.12);
+	margin: 1%;
+}
 
 .drdb-loader {
 	display: inline-block;
 	position: relative;
 	width: 100%;
-	height: 80px;
 	opacity: 0;
 }
 
@@ -81,7 +70,7 @@
 
 .drdb-loader {
 	display: inline-block;
-	height: 80px;
+	height: 20px;
 }
 
 .drdb-loader:after {
@@ -91,10 +80,21 @@
 	height: 64px;
 	margin: auto;
 	border-radius: 50%;
-	border: 6px solid rgb(0, 0, 0);
-	border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
+	border: 6px solid black;
+	border-color: black transparent black transparent;
+	-webkit-animation: drdb-loader 1.2s linear infinite;
 	animation: drdb-loader 1.2s linear infinite;
 }
+
+@-webkit-keyframes drdb-loader {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
 @keyframes drdb-loader {
 	0% {
 		transform: rotate(0deg);

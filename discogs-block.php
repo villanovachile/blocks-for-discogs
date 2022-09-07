@@ -27,23 +27,42 @@
 
 
 add_action( 'init', 'drdb_discogs_block_register_scripts' );
+add_action( 'init', 'drdb_add_shortcode' );
+ 
+function drdb_add_shortcode() {
+    add_shortcode( 'discogs-block', 'drdb_render_releases' );
+}
+
+function drdb_shortcode_style_func() {
+    wp_enqueue_style( 'shortcode_styles', plugin_dir_url( __FILE__ ) . '/build/style-index.css');
+  }
+  add_action( 'init', 'drdb_shortcode_style_func' );
 
 
 
     function drdb_render_releases() {
+        $options = get_option( 'drdb_discogs_block_options' );
+        if (!isset($options['username']) && !isset($options['token']) || $options['token'] == '' && $options['username'] == '') {
+            return '<div class="drdb-discogs-block-error">
+            <p><b>Discogs Block</b>:<br> You must enter both a user name and token in the Discogs Block settings</p>
+            </div>';
+        }
+        if (!isset($options['token']) || $options['token'] == ''){
+            return '<div class="drdb-discogs-block-error">
+            <p><b>Discogs Block</b>:<br> You must enter a token in the Discogs Block settings</p>
+            </div>';
+        }  else if (isset($options['token'])) {
+            $token = $options['token'];
+            }
+        if (!isset($options['username']) || $options['username'] == '') {
+            return '<div class="drdb-discogs-block-error">
+            <p><b>Discogs Block</b>:<br> You must enter a Discogs.com username in the Discogs Block settings</p>
+            </div>';
+        } else  if (isset($options['username'])) {
+            $username = $options['username'];
+        }        
 
         if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
-            $options = get_option( 'drdb_discogs_block_options' );
-            if (isset($options['token'])) {
-            $token = $options['token'];
-            } else {
-                $token = '';
-            }
-            if (isset($options['username'])) {
-                $username = $options['username'];
-                } else {
-                    $username = '';
-                }
             
                 $page = 1;
                 $limit = 6;
@@ -194,6 +213,21 @@ function drdb_load_menu() {
         'drdb_discogs_block' 
     );
 
+    register_setting ('drdb_discogs_block_options', 'drdb_discogs_block_options', 
+    array (
+        'type' => 'string',
+        'sanitize_callback' => 'drdb_discogs_block_validate_username',
+        'default' => ''
+    )
+    );
+
+    add_settings_field( 'drdb_discogs_block_username',
+    '<br>Your Discogs Username',
+    'drdb_discogs_block_settings_username',
+    'drdb_discogs_block',
+    'drdb_discogs_block_main'
+    );
+
 	register_setting ('drdb_discogs_block_options', 'drdb_discogs_block_options', 
 		array (
 			'type' => 'string',
@@ -208,23 +242,10 @@ function drdb_load_menu() {
         'drdb_discogs_block_main'
     );
 
-	register_setting ('drdb_discogs_block_options', 'drdb_discogs_block_options', 
-		array (
-			'type' => 'string',
-			'sanitize_callback' => 'drdb_discogs_block_validate_username',
-			'default' => ''
-		)
-	);
 
-	add_settings_field( 'drdb_discogs_block_username',
-	'Your Discogs Username',
-	'drdb_discogs_block_settings_username',
-	'drdb_discogs_block',
-	'drdb_discogs_block_main'
-	);
 
     function drdb_discogs_block_section_text() {
-        echo '<p>Use shortcode: <b>[drdb]</b></p>';
+        echo '<p>Use the Discogs Block in the WordPress Block Editor. <br> If using a page builder or classic editor, use shortcode: <b>[discogs-block]</b></p>';
     }
 
     function drdb_discogs_block_settings_token() {
@@ -235,8 +256,8 @@ function drdb_load_menu() {
             $token = '';
         }
    
-        echo "<input id='token' name='drdb_discogs_block_options[token]'
-        type='text' value='" . esc_attr( $token ) . "' />";
+        echo '<input id="token" name="drdb_discogs_block_options[token]"
+        type="text" value="' . esc_attr( $token ) . '" /><p>Enter a valid Discogs.com token. You can generate a new token <a href="https://www.discogs.com/settings/developers" target=_blank>here</a>.</p>';
 
     }
 
@@ -248,8 +269,8 @@ function drdb_load_menu() {
             $username = '';
         }
         
-        echo "<input id='username' name='drdb_discogs_block_options[username]'
-        type='text' value='" . esc_attr( $username ) . "' />";
+        echo '<br><input id="username" name="drdb_discogs_block_options[username]"
+        type="text" value="' . esc_attr( $username ) . '" /><p>Enter a valid Discogs.com user name. If you do not already have one, you can create a new one <a href="https://accounts.discogs.com/register" target=_blank>here</a>, and be sure to add releases to your collection.</p>';
 
     }
 

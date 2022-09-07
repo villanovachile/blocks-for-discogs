@@ -3,8 +3,7 @@
 	"name": "drdb/discogs-block",
 	"title": "Discogs Block",
 	"category": "embed",
-	"icon": "smiley",
-	"description": "Display your collection from discogs in a Gutenberg block or shortcode",
+	"description": "Display your collection from discogs in a Gutenberg block or shortcode. Be sure to enter your user name and Discogs.com token in Discogs Block settings.",
 	"supports": {
 		"html": false
 	},
