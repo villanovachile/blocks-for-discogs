@@ -22,25 +22,28 @@
 
 .album-title-div h4 {
 	font-family: "Helvetica Neue", Helvetica, "Nimbus Sans", Arial, sans-serif !important;
-	font-size: 1.2rem !important;
+	font-size: 1.2em !important;
 	text-align: center;
 	width: 100%;
 }
 
 .album-title-div {
 	min-height: 50px;
+	margin-bottom: 10px;
+	margin-top: 5px;
 }
 
 .discogs-card h5 {
 	font-family: "Helvetica Neue", Helvetica, "Nimbus Sans", Arial, sans-serif !important;
-	font-size: 0.8rem !important;
+	font-size: 0.8em !important;
 	text-align: center;
+	margin-bottom: 10px;
 }
 
 .discogs-card p {
 	font-family: "Helvetica Neue", Helvetica, "Nimbus Sans", Arial, sans-serif !important;
-	font-size: 0.8rem !important;
-	line-height: 7px;
+	font-size: 0.8em !important;
+	line-height: 1.5;
 }
 
 .album-cover-div img {
