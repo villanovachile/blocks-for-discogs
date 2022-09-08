@@ -1,4 +1,4 @@
-# Blocks for Dicsogs
+# Blocks for Discogs
 
 This is a WordPress plugin that adds a WordPress block to display your music collection from Discogs.com
 
