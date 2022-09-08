@@ -1,3 +1,9 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-bitwise */
+/* eslint-disable eqeqeq */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 const blocksForDiscogsParent = document.getElementById(
 	'drbfd-blocks-for-discogs-parent'
 );

@@ -10,7 +10,7 @@
 .album-cover-div {
 	margin-left: auto;
 	margin-right: auto;
-	min-height: 40%;
+	min-height: 150px;
 }
 
 .discogs-card {
@@ -26,16 +26,23 @@
 	text-align: center;
 	width: 100%;
 }
+
+.album-title-div {
+	min-height: 50px;
+}
+
 .discogs-card h5 {
 	font-family: "Helvetica Neue", Helvetica, "Nimbus Sans", Arial, sans-serif !important;
 	font-size: 0.8rem !important;
 	text-align: center;
 }
+
 .discogs-card p {
 	font-family: "Helvetica Neue", Helvetica, "Nimbus Sans", Arial, sans-serif !important;
 	font-size: 0.8rem !important;
-	line-height: 0.85rem;
+	line-height: 7px;
 }
+
 .album-cover-div img {
 	display: block;
 	margin-left: auto;
@@ -55,43 +62,43 @@
 	position: relative;
 	width: 100%;
 	opacity: 0;
+	height: 20px;
 }
 
 .drbfd-loader.show {
 	opacity: 1;
 }
 
-.drbfd-loader {
-	display: inline-block;
-	height: 20px;
-}
-
-.drbfd-loader:after {
+.drbfd-loader::after {
 	content: " ";
 	display: block;
 	width: 64px;
 	height: 64px;
 	margin: auto;
 	border-radius: 50%;
-	border: 6px solid black;
-	border-color: black transparent black transparent;
+	border: 6px solid #000;
+	border-color: #000 transparent #000 transparent;
 	-webkit-animation: drbfd-loader 1.2s linear infinite;
 	animation: drbfd-loader 1.2s linear infinite;
 }
 
 @-webkit-keyframes drbfd-loader {
+
 	0% {
 		transform: rotate(0deg);
 	}
+
 	100% {
 		transform: rotate(360deg);
 	}
 }
 
 @keyframes drbfd-loader {
+
 	0% {
 		transform: rotate(0deg);
 	}
+
 	100% {
 		transform: rotate(360deg);
 	}

@@ -33,8 +33,10 @@ Currently with the initial release it is not possible to sort the collection, se
 
 1. How the block appears on the front end
    ![How the block appears on the front end](/screenshots/screenshot-1.png)
+
 2. How the block appears in the Editor
    ![How the block appears in the Editor](/screenshots/screenshot-2.png)
+
 3. View of the settings page
    ![View of the settings page](/screenshots/screenshot-3.png)
 

@@ -44,10 +44,11 @@
 	},
 	"files": [
 		"assets",
-		"drbfd-blocks-for-discogs.js",
+		"assets/js/drbfd-blocks-for-discogs.js",
 		"uninstall.php",
 		"build",
 		"blocks-for-discogs.php",
-		"block.json"
+		"block.json",
+		"readme.txt"
 	]
 }

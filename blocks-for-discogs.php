@@ -16,11 +16,11 @@
  */
 
  
- // Register drbfd-blocks-for-discogs.js
+ // Register /assets/js/drbfd-blocks-for-discogs.js
  function drbfd_blocks_for_discogs_register_scripts() {
     wp_register_script(
    'drbfd_script',
-   plugin_dir_url( __FILE__ ) . 'drbfd-blocks-for-discogs.js', array(),
+   plugin_dir_url( __FILE__ ) . '/assets/js/drbfd-blocks-for-discogs.js', array(),
    '1.0.0',
    true
    ); 
