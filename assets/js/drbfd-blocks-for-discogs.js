@@ -46,7 +46,7 @@ const getReleases = (page, limit) => {
 const displayReleases = (discogsReleases) => {
 	discogsReleases.data.releases.forEach((release) => {
 		const artistName = release.basic_information.artists[0].name;
-		const albumName = release.basic_information.title;
+		let albumName = release.basic_information.title;
 		let releaseYear = release.basic_information.year;
 		const format = release.basic_information.formats[0].name;
 		let albumCover = release.basic_information.thumb;
@@ -55,6 +55,10 @@ const displayReleases = (discogsReleases) => {
 		const artistURL =
 			'https://discogs.com/artist/' +
 			release.basic_information.artists[0].id;
+
+		if (albumName.length >= 35) {
+			albumName = albumName.substring(0, 35) + '...';
+		}
 
 		if ((releaseYear == 0) | (releaseYear == null)) {
 			releaseYear = 'Unknown';
@@ -78,6 +82,21 @@ const displayReleases = (discogsReleases) => {
 		albumTitleDiv.classList.add('album-title-div');
 		gridNumber.appendChild(albumTitleDiv);
 
+		// release details container
+		albumReleaseDetailsDiv = document.createElement('div');
+		albumReleaseDetailsDiv.classList.add('album-release-details');
+		gridNumber.appendChild(albumReleaseDetailsDiv);
+
+		//Album cover image
+		albumCoverCard = document.createElement('img');
+		albumCoverCard.setAttribute('src', albumCover);
+		const albumArtLink = document.createElement('a');
+		albumArtLink.title = albumName;
+		albumArtLink.href = albumURL;
+		albumArtLink.target = '_blank';
+		albumCoverDiv.appendChild(albumArtLink);
+		albumArtLink.appendChild(albumCoverCard);
+
 		// Album title H4
 		albumNameCard = document.createElement('h4');
 		const albumLink = document.createElement('a');
@@ -90,17 +109,7 @@ const displayReleases = (discogsReleases) => {
 		albumNameCard.appendChild(albumLink);
 		albumTitleDiv.appendChild(albumNameCard);
 
-		//Album cover image
-		albumCoverCard = document.createElement('img');
-		albumCoverCard.setAttribute('src', albumCover);
-		const albumArtLink = document.createElement('a');
-		albumArtLink.title = albumName;
-		albumArtLink.href = albumURL;
-		albumArtLink.target = '_blank';
-		albumCoverDiv.appendChild(albumArtLink);
-		albumArtLink.appendChild(albumCoverCard);
-
-		//Album title H5
+		//Album Artist H5
 		artistNameCard = document.createElement('h5');
 		const artistLink = document.createElement('a');
 		const artistLinkText = document.createTextNode(artistName);
@@ -109,19 +118,20 @@ const displayReleases = (discogsReleases) => {
 		artistLink.href = artistURL;
 		artistLink.target = '_blank';
 		artistNameCard.appendChild(artistLink);
-		gridNumber.appendChild(artistNameCard);
+		albumTitleDiv.appendChild(artistNameCard);
 
 		//format P tag
 		formatCard = document.createElement('p');
 		formatCard.appendChild(document.createTextNode('Format: ' + format));
-		gridNumber.appendChild(formatCard);
+		albumReleaseDetailsDiv.appendChild(formatCard);
 
 		//release year P tag
 		releaseYearCard = document.createElement('p');
 		releaseYearCard.appendChild(
 			document.createTextNode('Release Year: ' + releaseYear)
 		);
-		gridNumber.appendChild(releaseYearCard);
+		albumReleaseDetailsDiv.appendChild(releaseYearCard);
+
 		blocksForDiscogsContainer.appendChild(gridNumber);
 	});
 };

@@ -16,7 +16,6 @@
  */
 
  
- // Register /assets/js/drbfd-blocks-for-discogs.js
  function drbfd_blocks_for_discogs_register_scripts() {
     wp_register_script(
    'drbfd_script',
@@ -25,8 +24,6 @@
    true
    ); 
 }
-
-
 
 add_action( 'init', 'drbfd_blocks_for_discogs_register_scripts' );
 add_action( 'init', 'drbfd_add_shortcode' );
@@ -38,9 +35,8 @@ function drbfd_add_shortcode() {
 function drbfd_shortcode_style_func() {
     wp_enqueue_style( 'shortcode_styles', plugin_dir_url( __FILE__ ) . '/build/style-index.css');
   }
+
   add_action( 'init', 'drbfd_shortcode_style_func' );
-
-
 
     function drbfd_render_releases() {
         $options = get_option( 'drbfd_blocks_for_discogs_options' );
@@ -84,8 +80,7 @@ function drbfd_shortcode_style_func() {
             }
             
             $body = wp_remote_retrieve_body( $response );
-            $data = json_decode( $body, true );
-            
+            $data = json_decode( $body, true );           
             
             $output = '<div id="drbfd-blocks-for-discogs-parent" class="drbfd-blocks-for-discogs-parent">
                         <div id="#drbfd-discogs-container" class="drbfd-discogs-container">';
@@ -97,23 +92,23 @@ function drbfd_shortcode_style_func() {
                 $releaseYear = $item['basic_information']['year'];
                 $format = $item['basic_information']['formats'][0]['name'];
                 $output .= '<div class="discogs-card">
-                            <div class="album-cover-div"><img src="' . $albumCover . '"></div>
-                            <div class="album-title-div">
-                                    <h4>' . $albumName . '</h4>
+                                <div class="album-cover-div"><img src="' . $albumCover . '"></div>
+                                <div class="album-title-div">
+                                        <h4>' . $albumName . '</h4>
+                                    <h5>' . $artistName . '</h5>
                                 </div>
-                                <h5>' . $artistName . '</h5>
-                                <p>Format: ' . $format . '</p>
-                                <p>Released: ' . $releaseYear . '</p>
-                                </div>';
+                                <div class="album-release-details">
+                                    <p>Format: ' . $format . '</p>
+                                    <p>Released: ' . $releaseYear . '</p>
+                                </div>
+                            </div>';
             }
             $output .= '</div></div>';
 
             return  $output;
         
         } 
-            
-        
-        
+                   
         wp_enqueue_script( 'jquery' );
         wp_localize_script( 'drbfd_script', 'discogs_fetch',
         array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'noimage' => plugin_dir_url( __FILE__ ) . '/assets/noimage.png' ) );
@@ -132,7 +127,6 @@ function drbfd_shortcode_style_func() {
 	}
 
     add_action( 'init', 'drbfd_blocks_for_discogs_init' );
-
     add_action('wp_ajax_drbfd_discogs_fetch', 'drbfd_discogs_fetch');
     add_action('wp_ajax_nopriv_drbfd_discogs_fetch', 'drbfd_discogs_fetch');
 
@@ -178,7 +172,6 @@ function drbfd_shortcode_style_func() {
         die();
     
     }
-
 
 add_action ('admin_menu', 'drbfd_add_settings_menu');
 
