@@ -27,6 +27,7 @@ const getReleases = (page, limit) => {
 		type: 'get',
 		data: {
 			action: 'drbfd_discogs_fetch',
+			nonce: discogs_fetch.nonce,
 			page,
 			limit,
 		},

@@ -111,7 +111,10 @@ function drbfd_shortcode_style_func() {
                    
         wp_enqueue_script( 'jquery' );
         wp_localize_script( 'drbfd_script', 'discogs_fetch',
-        array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'noimage' => plugin_dir_url( __FILE__ ) . '/assets/noimage.png' ) );
+        array( 'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        'noimage' => plugin_dir_url( __FILE__ ) . '/assets/noimage.png',
+        'nonce' => wp_create_nonce('ajax-nonce')
+        ) );
         wp_enqueue_script( 'drbfd_script' );
         return '
         <div id="drbfd-blocks-for-discogs-parent" class="drbfd-blocks-for-discogs-parent">
@@ -131,6 +134,10 @@ function drbfd_shortcode_style_func() {
     add_action('wp_ajax_nopriv_drbfd_discogs_fetch', 'drbfd_discogs_fetch');
 
     function drbfd_discogs_fetch(){
+        if ( ! wp_verify_nonce( $_GET['nonce'], 'ajax-nonce' ) ) {
+            return $_GET['nonce]']; 
+            die ();
+        }
         $options = get_option( 'drbfd_blocks_for_discogs_options' );
         if (isset($options['token'])) {
         $token = $options['token'];
