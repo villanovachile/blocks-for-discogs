@@ -12,11 +12,11 @@ This is a WordPress Block that displays your music collection from Discogs.com
 
 == Description ==
 
-Your colleciton from discogs.com will be displayed via a WordPress Block. If you're using the Classic Editor, or a page builder such as Elementor, then you will want to use the short code [blocks-for-discogs].
+This is a WordPress plugin displays your music collection from Discogs.com in a WordPress Block. If you're using the Classic Editor, or a page builder such as Elementor, then you can still use its built in short code [blocks-for-discogs].
 
 == Installation and Usage ==
 
-1. Install an activate the plugin.
+1. Install and activate the plugin.
 2. Navigate to Blocks for Discogs in the admin menu
 3. Enter your Discogs.com username (required). If you don't already have a discogs.com account, you can register for a free account [here] (https://accounts.discogs.com/register).
 4. Enter your Discogs.com token (required). You can view or generate a token [here](https://www.discogs.com/settings/developers).
