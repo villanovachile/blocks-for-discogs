@@ -73,7 +73,8 @@
 	position: relative;
 	width: 100%;
 	opacity: 0;
-	height: 20px;
+	height: 50px;
+	padding-top: 30px;
 }
 
 .drbfd-loader.show {
@@ -83,8 +84,8 @@
 .drbfd-loader::after {
 	content: " ";
 	display: block;
-	width: 64px;
-	height: 64px;
+	width: 35px;
+	height: 35px;
 	margin: auto;
 	border-radius: 50%;
 	border: 6px solid #000;

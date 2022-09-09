@@ -14,6 +14,8 @@ This is a WordPress Block that displays your music collection from Discogs.com
 
 This is a WordPress plugin displays your music collection from Discogs.com in a WordPress Block. If you're using the Classic Editor, or a page builder such as Elementor, then you can still use its built in short code [blocks-for-discogs].
 
+A live demo can be seen at https://danielr.io/projects/blocks-for-discogs-demo/
+
 == Installation and Usage ==
 
 1. Install and activate the plugin.
