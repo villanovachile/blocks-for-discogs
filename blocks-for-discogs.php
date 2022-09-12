@@ -210,6 +210,12 @@ function drbfd_blocks_for_discogs_option_page() {
 ?>
 <?php
 
+function drbfd_blocks_for_discogs_settings_errors() {
+    settings_errors();   
+}
+
+add_action('admin_notices', 'drbfd_blocks_for_discogs_settings_errors');
+
 add_action('admin_init', 'drbfd_load_menu');
 
 function drbfd_load_menu() {    
@@ -266,7 +272,7 @@ function drbfd_load_menu() {
         }
    
         echo '<input id="token" name="drbfd_blocks_for_discogs_options[token]"
-        type="text" value="' . esc_attr( $token ) . '" />
+        type="text" value="' . esc_attr( $token ) . '" required/>
         <p>Enter a valid Discogs.com token. You can generate a new token 
         <a href="https://www.discogs.com/settings/developers" target=_blank>here</a>.</p>';
 
@@ -281,7 +287,7 @@ function drbfd_load_menu() {
         }
         
         echo '<br><input id="username" name="drbfd_blocks_for_discogs_options[username]"
-        type="text" value="' . esc_attr( $username ) . '" />
+        type="text" value="' . esc_attr( $username ) . '" required/>
         <p>Enter a valid Discogs.com user name. If you do not already have one, 
         you can create a new one <a href="https://accounts.discogs.com/register" target=_blank>here</a>, 
         and be sure to add releases to your collection.</p>';
