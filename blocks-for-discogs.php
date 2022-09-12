@@ -150,11 +150,16 @@ function drbfd_shortcode_style_func() {
                 $username = '';
             }
         if(isset($_REQUEST)){
-            $page = $_REQUEST['page'];
-            $limit = $_REQUEST['limit'];
-    
-            
-    
+            $page = (int)$_REQUEST['page'];
+            $limit = (int)$_REQUEST['limit'];
+
+            if (!is_int($page) || $page == 0) {
+                die();
+            } 
+            if (!is_int($limit) || $limit > 50 | $limit == 0) {
+                die();
+            }
+                    
             $response = wp_remote_get(
                 esc_url_raw( 'https://api.discogs.com/users/' . $username .'/collection/folders/0/releases?page='.$page.'&per_page='.$limit ),
                 array(
@@ -188,7 +193,6 @@ add_action ('admin_menu', 'drbfd_add_settings_menu');
             plugin_dir_url( __FILE__ ) . '/assets/icon.png', 99);
     }
 
-    // Create the option page
 function drbfd_blocks_for_discogs_option_page() {
     ?>
     <div class="wrap">

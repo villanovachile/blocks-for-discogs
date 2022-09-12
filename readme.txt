@@ -47,6 +47,6 @@ Currently with the initial release it is not possible to sort the collection, se
 
 == Changelog ==
 
-### 1.0 - 2022-09-10
+### 1.0 - 2022-09-14
 
 - Initial plugin release.
