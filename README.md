@@ -25,7 +25,7 @@ Ensure that both username and token are entered correctly. You must also ensure 
 
 ### Is it possible to ...
 
-Currently with the initial release it is not possible to sort the collection, select a custom created collction, want lists, for sale lists, or customize how the collection displays. This functionaliy is intended to be added in future releases.
+Currently with the initial release it is not possible to sort the collection, select a custom created collection, want lists, for sale lists, or customize how the collection displays. This functionally is intended to be added in future releases.
 
 ## Screenshots
 
