@@ -40,6 +40,6 @@ Currently with the initial release it is not possible to sort the collection, se
 
 ## Changelog
 
-### 1.0 - 2022-09-14
+### 1.0 - 2022-09-13
 
 -   Initial plugin release.
