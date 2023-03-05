@@ -307,7 +307,7 @@ function drbfd_load_menu() {
     function drbfd_blocks_for_discogs_validate_username( $input ) {
 		
         $input['username'] = preg_replace(
-            '/[^A-Za-z0-9]/',
+            '/[^A-Za-z0-9._-]/',
             '',
             $input['username'] );
 			return $input;
