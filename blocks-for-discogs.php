@@ -5,7 +5,7 @@
  * Description:       Displays a collection from discogs.com
  * Requires at least: 5.9
  * Requires PHP:      7.4
- * Version:           1.0
+ * Version:           1.0.1
  * Author:            villanovachile
  * Author URI:        https://danielr.io
  * License:           GPL-2.0-or-later
