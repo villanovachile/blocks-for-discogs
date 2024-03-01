@@ -2,7 +2,7 @@
 Contributors: villanovachile
 Tags: discogs, block, gutenberg block, wordpress block, vinyl, collection
 Requires at least: 5.9
-Tested up to: 6.1
+Tested up to: 6.4.3
 Stable tag: 1.0.1
 Requires PHP: 7.0
 License: GPLv2 or later
